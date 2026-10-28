@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Guest House & Visiting Parent Room Booking System | LPU</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-area">
+                <h1>🎓 LPU Guest House</h1>
+                <p>Visiting Parent & Guest Accommodation Portal</p>
+            </div>
+            <nav class="nav-links">
+                <a href="#rooms">Room Types</a>
+                <a href="#calendar">Availability</a>
+                <a href="#booking">Book a Room</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero / Welcome Banner -->
+    <section class="hero-banner">
+        <h2>Welcome to Lovely Professional University Guest House</h2>
+        <p>Comfortable and convenient on-campus stay for parents, guardians, and official visitors.</p>
+    </section>
+
+    <main class="main-container">
+
+        <!-- 1. Room Type Showcase Section -->
+        <section id="rooms" class="section-block">
+            <div class="section-title">
+                <h2>1. Available Room Types</h2>
+                <p>Select a room category that suits your stay requirements.</p>
+            </div>
+
+            <div class="rooms-grid">
+                <!-- Room Card 1 -->
+                <div class="room-card" id="card-standard">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Standard Double Room">
+                    <div class="room-details">
+                        <div class="room-header">
+                            <h3>Standard Double Room</h3>
+                            <span class="price-tag">₹1,000 / night</span>
+                        </div>
+                        <p class="room-desc">Ideal for parents looking for a simple, budget-friendly, and comfortable stay on campus.</p>
+                        <h4>Included Amenities:</h4>
+                        <ul class="amenities-list">
+                            <li>🛏️ 2 Single / 1 Double Bed</li>
+                            <li>🚿 Attached Bathroom with Geyser</li>
+                            <li>📶 High-Speed Campus Wi-Fi</li>
+                            <li>🪑 Study Table & Chair</li>
+                            <li>🧹 Daily Housekeeping</li>
+                        </ul>
+                        <button type="button" class="select-room-btn" onclick="selectRoom('Standard Double Room', 1000)">Select Standard Room</button>
+                    </div>
+                </div>
+
+                <!-- Room Card 2 -->
+                <div class="room-card" id="card-executive">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80" alt="Executive AC Suite">
+                    <div class="room-details">
+                        <div class="room-header">
+                            <h3>Executive AC Suite</h3>
+                            <span class="price-tag">₹1,800 / night</span>
+                        </div>
+                        <p class="room-desc">Spacious air-conditioned room offering enhanced comfort for visiting families.</p>
+                        <h4>Included Amenities:</h4>
+                        <ul class="amenities-list">
+                            <li>❄️ Split Air Conditioning</li>
+                            <li>📺 32" LED TV with Cable</li>
+                            <li>🛏️ Queen Sized Bed</li>
+                            <li>☕ Electric Kettle with Tea/Coffee kit</li>
+                            <li>🚿 Hot & Cold Running Water</li>
+                        </ul>
+                        <button type="button" class="select-room-btn" onclick="selectRoom('Executive AC Suite', 1800)">Select Executive Suite</button>
+                    </div>
+                </div>
+
+                <!-- Room Card 3 -->
+                <div class="room-card" id="card-vip">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80" alt="VIP Suite">
+                    <div class="room-details">
+                        <div class="room-header">
+                            <h3>VIP Suite</h3>
+                            <span class="price-tag">₹2,800 / night</span>
+                        </div>
+                        <p class="room-desc">Premium luxury accommodation featuring a separate living lounge and deluxe furnishing.</p>
+                        <h4>Included Amenities:</h4>
+                        <ul class="amenities-list">
+                            <li>🛋️ Separate Living Room & Sofa</li>
+                            <li>❄️ Dual Climate Control AC</li>
+                            <li>🧊 Mini Refrigerator</li>
+                            <li>🍽️ Priority In-Room Dining</li>
+                            <li>🚗 Dedicated Guest Parking Slot</li>
+                        </ul>
+                        <button type="button" class="select-room-btn" onclick="selectRoom('VIP Suite', 2800)">Select VIP Suite</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Room Availability Calendar Section -->
+        <section id="calendar" class="section-block">
+            <div class="section-title">
+                <h2>2. Room Availability Calendar</h2>
+                <p>Check open and booked dates before making your reservation.</p>
+            </div>
+
+            <div class="calendar-wrapper">
+                <div class="calendar-header">
+                    <h3 id="calendar-month-year">November 2026</h3>
+                    <div class="legend">
+                        <span class="legend-item"><span class="badge open"></span> Available (Open)</span>
+                        <span class="legend-item"><span class="badge booked"></span> Already Booked</span>
+                        <span class="legend-item"><span class="badge selected"></span> Selected Range</span>
+                    </div>
+                </div>
+
+                <div class="calendar-grid-header">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Populated dynamically via simple JavaScript -->
+                </div>
+                <p class="calendar-note">* Click on any available date to set it as your Check-in Date automatically.</p>
+            </div>
+        </section>
+
+        <!-- 3. Booking Form & Automatic Price Calculator Section -->
+        <section id="booking" class="section-block">
+            <div class="section-title">
+                <h2>3. Guest House Booking Form & Price Calculator</h2>
+                <p>Fill in parent and student details to reserve the guest room.</p>
+            </div>
+
+            <div class="booking-container">
+                <!-- Left Column: Form -->
+                <form id="bookingForm" class="booking-form" onsubmit="handleBookingSubmit(event)">
+
+                    <h3 class="form-subheading">A. Stay & Room Selection</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="roomType">Selected Room Type *</label>
+                            <select id="roomType" name="roomType" required onchange="handleRoomChange()">
+                                <option value="">-- Select Room Type --</option>
+                                <option value="Standard Double Room" data-price="1000">Standard Double Room (₹1,000/night)</option>
+                                <option value="Executive AC Suite" data-price="1800">Executive AC Suite (₹1,800/night)</option>
+                                <option value="VIP Suite" data-price="2800">VIP Suite (₹2,800/night)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row two-cols">
+                        <div class="form-group">
+                            <label for="checkInDate">Check-in Date *</label>
+                            <input type="date" id="checkInDate" name="checkInDate" required onchange="calculateCharges()">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkOutDate">Check-out Date *</label>
+                            <input type="date" id="checkOutDate" name="checkOutDate" required onchange="calculateCharges()">
+                        </div>
+                    </div>
+
+                    <h3 class="form-subheading">B. Visiting Parent / Guardian Information</h3>
+
+                    <div class="form-row two-cols">
+                        <div class="form-group">
+                            <label for="parentName">Visiting Parent / Guardian Name *</label>
+                            <input type="text" id="parentName" name="parentName" placeholder="e.g. Rajesh Kumar" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentContact">Mobile Number *</label>
+                            <input type="tel" id="parentContact" name="parentContact" placeholder="e.g. 9876543210" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row two-cols">
+                        <div class="form-group">
+                            <label for="idProofType">ID Proof Type *</label>
+                            <select id="idProofType" name="idProofType" required>
+                                <option value="">-- Select ID Type --</option>
+                                <option value="Aadhaar Card">Aadhaar Card</option>
+                                <option value="PAN Card">PAN Card</option>
+                                <option value="Voter ID">Voter ID</option>
+                                <option value="Passport">Passport</option>
+                                <option value="Driving License">Driving License</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="idProofNumber">ID Proof Number / Details *</label>
+                            <input type="text" id="idProofNumber" name="idProofNumber" placeholder="e.g. 1234-5678-9012" required>
+                        </div>
+                    </div>
+
+                    <h3 class="form-subheading">C. LPU Student Details</h3>
+
+                    <div class="form-row two-cols">
+                        <div class="form-group">
+                            <label for="studentName">Student Full Name *</label>
+                            <input type="text" id="studentName" name="studentName" placeholder="e.g. Amit Kumar" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentRoll">Student Registration / Roll Number *</label>
+                            <input type="text" id="studentRoll" name="studentRoll" placeholder="e.g. 12401234" required>
+                        </div>
+                    </div>
+
+                    <h3 class="form-subheading">D. Meal Plan Options</h3>
+                    <div class="form-group meal-options">
+                        <label>Choose a Dining / Mess Meal Plan:</label>
+                        <div class="radio-item">
+                            <input type="radio" id="mealNone" name="mealPlan" value="0" checked onchange="calculateCharges()">
+                            <label for="mealNone">Room Only (No Meals Included) - ₹0</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="mealBreakfast" name="mealPlan" value="200" onchange="calculateCharges()">
+                            <label for="mealBreakfast">Breakfast Only - ₹200 / person / day</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="mealHalf" name="mealPlan" value="450" onchange="calculateCharges()">
+                            <label for="mealHalf">Half Board (Breakfast + Dinner) - ₹450 / person / day</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="mealFull" name="mealPlan" value="650" onchange="calculateCharges()">
+                            <label for="mealFull">Full Board (Breakfast + Lunch + Dinner) - ₹650 / person / day</label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Confirm Guest House Booking</button>
+                        <button type="reset" class="reset-btn" onclick="resetCalculation()">Reset Form</button>
+                    </div>
+                </form>
+
+                <!-- Right Column: Live Price & Summary Card -->
+                <div class="price-summary-card">
+                    <h3>Booking Summary & Charges</h3>
+                    <div class="summary-line">
+                        <span>Selected Room:</span>
+                        <strong id="summaryRoom">Not Selected</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Rate Per Night:</span>
+                        <span id="summaryRate">₹0</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Total Stay Duration:</span>
+                        <strong id="summaryNights">0 Night(s)</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Room Cost:</span>
+                        <span id="summaryRoomCost">₹0</span>
+                    </div>
+                    <div class="summary-line">
+                        <span>Meal Plan Cost:</span>
+                        <span id="summaryMealCost">₹0</span>
+                    </div>
+                    <hr>
+                    <div class="summary-line total-line">
+                        <span>Total Payable Amount:</span>
+                        <strong id="summaryTotalAmount">₹0</strong>
+                    </div>
+
+                    <div class="important-guidelines">
+                        <h4>📌 LPU Guest House Rules:</h4>
+                        <ul>
+                            <li>Check-in Time: 12:00 PM</li>
+                            <li>Check-out Time: 11:00 AM</li>
+                            <li>Original government ID proof must be presented at the security reception.</li>
+                            <li>Booking is strictly for registered student parents/immediate guardians.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Confirmation Modal / Alert -->
+        <div id="confirmationModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <div class="success-icon">✅</div>
+                <h3>Guest House Booking Confirmed!</h3>
+                <p>Your room request has been submitted successfully to LPU Guest Relations.</p>
+                
+                <div class="ticket-box" id="ticketDetails">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <button class="print-btn" onclick="window.print()">Print Booking Receipt</button>
+                <button class="close-modal-btn" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><strong>Lovely Professional University (LPU) - CSE326 CA2 Assessment Project</strong></p>
+        <p>College Guest House & Visiting Parent Room Booking System | Created by 1st Semester CSE Student</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
